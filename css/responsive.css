@@ -1,0 +1,160 @@
+body {
+  overflow-x: hidden; 
+}
+
+.section {
+  padding-inline: 16px;
+  padding-block: 24px;
+}
+
+
+.site-header__inner {
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-block: 16px;
+}
+
+.site-nav__list {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.site-nav__link {
+  display: block;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+}
+
+
+.products-grid {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.catalog-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.catalog-filters {
+  position: static;
+  width: 100%;
+}
+
+
+.order-form {
+  grid-template-columns: 1fr;
+}
+
+.form-actions {
+  flex-direction: column-reverse;
+}
+
+.form-actions button {
+  width: 100%;
+}
+
+
+.hero {
+  background-attachment: scroll;
+  min-height: 40vh;
+}
+
+.hero h1 {
+  font-size: 2rem;
+}
+
+.hero p {
+  font-size: 1rem;
+}
+
+
+@media (min-width: 640px) {
+  .section {
+    padding-inline: 24px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .form-actions {
+    flex-direction: row;
+  }
+
+  .form-actions button {
+    width: auto;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .site-header__inner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .site-nav__list {
+    flex-wrap: nowrap;
+    gap: 4px;
+  }
+
+  .order-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .form-field--wide {
+    grid-column: 1 / -1;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .section {
+    padding-inline: 32px;
+    padding-block: 48px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .catalog-layout {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .catalog-filters {
+    position: sticky;
+    top: 90px;
+  }
+}
+
+
+@media (min-width: 1280px) {
+  .products-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+/* Дополнения КР №4 */
+[hidden] { display: none !important; }
+.catalog-heading { padding-bottom: 0; width: 100%; }
+.catalog-products, .catalog-products .product-card { min-width: 0; width: 100%; }
+.catalog-products { overflow-wrap: anywhere; }
+.catalog-products .products-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+.button:disabled { opacity: .65; cursor: default; transform: none; }
+.field-error { color: #b3261e; }
+:root[data-theme="dark"] .field-error { color: #ffb4ab; }
+[aria-invalid="true"] { border-color: #b3261e; }
+.consent-label { display: flex; gap: 8px; align-items: center; }
+.consent-label input { width: auto; }
+.form-message { margin: 0; }
+.form-actions { grid-column: 1 / -1; }
+:root[data-theme="dark"] .button, :root[data-theme="dark"] .form-actions button { color: #14251f; }
+@media (max-width: 639px) { .catalog-layout { padding-inline: 16px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
