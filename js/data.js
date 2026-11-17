@@ -1,5 +1,5 @@
 'use strict';
-// Учебные цены и описания, а не актуальное коммерческое предложение.
+
 const products = [
   { id: 1, title: 'ASUS ROG Strix Scope II RX', category: 'keyboard', price: 18990, isAvailable: true, description: 'Оптико-механическая игровая клавиатура.' },
   { id: 2, title: 'NuPhy Air60 HE', category: 'keyboard', price: 14500, isAvailable: false, description: 'Компактная клавиатура для небольшого рабочего стола.' },

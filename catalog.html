@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/responsive.css" />
     <script src="js/data.js" defer></script>
     <script src="js/catalog.js" defer></script>
+    <script src="js/cart.js" defer></script>
     <script src="js/validation.js" defer></script>
     <script src="js/main.js" defer></script>
   </head>
@@ -25,6 +26,7 @@
             <li><a class="site-nav__link" href="product.html">Товар</a></li>
             <li><a class="site-nav__link" href="order.html">Заявка</a></li>
             <li><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+            <li><a class="site-nav__link" href="cart.html">Корзина<span data-cart-count></span></a></li>
           </ul>
         </nav>
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Переключить тему">
@@ -54,6 +56,8 @@
           <h2 id="products-title">Товары</h2>
           <p data-catalog-count role="status" aria-live="polite"></p>
           <p data-catalog-empty hidden>Ничего не найдено. Измените запрос или сбросьте фильтры.</p>
+          <p data-cart-feedback role="status" aria-live="polite"></p>
+          <p data-cart-storage hidden role="status">Браузер не сохранил корзину.</p>
           <div class="products-grid" data-products-container></div>
           <noscript>Включите JavaScript для просмотра интерактивного каталога.</noscript>
         </section>

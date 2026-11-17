@@ -1,5 +1,5 @@
 'use strict';
-// Единственная дополнительная функция: тема с сохранением выбора.
+// Переключение темы из КР №3.
 function initThemeToggle() {
   let saved;
   try { saved = localStorage.getItem('shop:theme'); } catch { /* Хранилище может быть запрещено. */ }
@@ -19,6 +19,7 @@ function initThemeToggle() {
   }));
 }
 initThemeToggle();
+initCart();
 initCatalog();
 initOrderForm();
 const output = document.querySelector('[data-product-statistics]');

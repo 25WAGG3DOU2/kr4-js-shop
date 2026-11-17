@@ -43,6 +43,15 @@ function createProductCard(product) {
   button.textContent = product.isAvailable ? 'Оформить заявку' : 'Недоступен';
   button.disabled = !product.isAvailable;
   card.append(title, description, availability, price, button);
+  if (product.isAvailable) {
+    const addButton = document.createElement('button');
+    addButton.type = 'button';
+    addButton.classList.add('button');
+    addButton.dataset.productId = String(product.id);
+    addButton.dataset.action = 'add-to-cart';
+    addButton.textContent = 'В корзину';
+    card.append(addButton);
+  }
   return card;
 }
 function initCatalog() {
@@ -73,7 +82,19 @@ function initCatalog() {
     const button = event.target.closest('button[data-product-id]');
     if (!button || button.disabled) return;
     const product = findProductById(products, Number(button.dataset.productId));
-    if (product && product.isAvailable) window.location.href = `order.html?product=${product.id}`;
+    if (!product?.isAvailable) return;
+    if (button.dataset.action === 'add-to-cart') {
+      const quantity = cart.find(item => item.productId === product.id)?.quantity || 0;
+      const feedback = document.querySelector('[data-cart-feedback]');
+      if (quantity >= MAX_CART_QUANTITY) {
+        feedback.textContent = 'Достигнут предел количества для этого товара.';
+        return;
+      }
+      changeCartQuantity(product.id, quantity + 1);
+      feedback.textContent = `В корзине: ${product.title} — ${quantity + 1} шт.`;
+      return;
+    }
+    window.location.href = `order.html?product=${product.id}`;
   });
   render();
 }

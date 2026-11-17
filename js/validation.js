@@ -21,7 +21,21 @@ function initOrderForm() {
     option.textContent = `${product.title} — ${formatPrice(product.price)}`;
     productSelect.append(option);
   }
-  const requestedId = Number(new URLSearchParams(window.location.search).get('product'));
+  const params = new URLSearchParams(window.location.search);
+  const lines = params.has('cart') ? getCartLines() : [];
+  if (lines.length) {
+    const summary = document.querySelector('[data-order-cart]');
+    summary.hidden = false;
+    productSelect.closest('.form-field').hidden = true;
+    for (const { product, quantity, subtotal } of lines) {
+      const item = document.createElement('li');
+      item.textContent = `${product.title} × ${quantity} — ${formatPrice(subtotal)}`;
+      summary.querySelector('ul').append(item);
+    }
+    summary.querySelector('strong').textContent =
+      'Итого ' + formatPrice(lines.reduce((sum, line) => sum + line.subtotal, 0));
+  }
+  const requestedId = Number(params.get('product'));
   const requested = findProductById(products, requestedId);
   if (requested && requested.isAvailable) productSelect.value = String(requestedId);
   function readValues() {
